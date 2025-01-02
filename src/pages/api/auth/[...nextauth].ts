@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { signIn } from "@/lib/firebase/service";
+import GoogleProvider from "next-auth/providers/google";
+import { loginWithGoogle, signIn } from "@/lib/firebase/service";
 import bcrypt from "bcrypt";
 
 const authOptions: NextAuthOptions = {
@@ -32,6 +33,10 @@ const authOptions: NextAuthOptions = {
           return null;
         }
       }
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET || "",
     })
   ],
   callbacks: {
@@ -41,6 +46,20 @@ const authOptions: NextAuthOptions = {
         token.phone = user.phone;
         token.email = user.email;
         token.role = user.role;
+      }
+      if (account?.provider === "google") {
+        const data = {
+          fullname: user.name,
+          email: user.email,
+          image: user.image,
+          type: "google",
+        }
+        await loginWithGoogle(data, (userData: any) => {
+          token.fullname = userData.fullname;
+          token.email = userData.email;
+          token.image = userData.image;
+          token.role = userData.role;
+        })
       }
       return token;
     },
@@ -53,6 +72,9 @@ const authOptions: NextAuthOptions = {
       }
       if ("email" in token) {
         session.user.email = token.email;
+      }
+      if ("image" in token) {
+        session.user.image = token.image;
       }
       if ("role" in token) {
         session.user.role = token.role;

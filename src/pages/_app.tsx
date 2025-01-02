@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import Head from "next/head";
 import type { AppProps } from "next/app";
 import {Lato} from 'next/font/google';
 import { SessionProvider } from "next-auth/react";
@@ -16,6 +17,9 @@ export default function App({ Component, pageProps: {session, ...pageProps} }: A
   const { pathname } = useRouter();
   return (
     <SessionProvider session={session}>
+      <Head>
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' />
+      </Head>
       <div className={lato.className}>
       {!disableNavbar.includes(pathname) && <Navbar />}
         <Component {...pageProps} />

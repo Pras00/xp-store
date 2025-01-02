@@ -69,6 +69,15 @@ const LoginViews = () => {
         <p>
           Don&apos;t have any account? <Link href={"/auth/register"} className={styles.signin}>Sign Up</Link>
         </p>
+        <div className={styles.or}>
+          <div className={styles.or__line}></div>
+          <p className={styles.or__test}>OR</p>
+          <div className={styles.or__line}></div>
+        </div>
+        <button className={styles.login__google__button} type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })}>
+          <i className='bx bxl-google'></i>
+          {isLoading ? "Loading..." : "Login with Google"}
+        </button>
       </div>
     </div>
   );

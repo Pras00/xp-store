@@ -96,3 +96,43 @@
 .signin:hover {
   text-decoration: underline;
 }
+
+.or {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  text-align: center;
+  margin: 1rem 0;
+
+  &__line {
+    height: 1px;
+    background-color: black;
+    grid-column: span 2 / span 2;
+  }
+}
+
+.login__google__button {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(254, 63, 63);
+  color: #fff;
+  width: 100%;
+  cursor: pointer;
+
+  i {
+    font-size: 1.5rem;
+  }
+}
+
+.login__google__button:hover {
+  background-color: rgb(254, 63, 63, 0.8);
+}
