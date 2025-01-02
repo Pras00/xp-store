@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: #0b0a29;
+  position: fixed;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+
+    &__auth {
+      background-color: white;
+      color: #0b0a29;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}

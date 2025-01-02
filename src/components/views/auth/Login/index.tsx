@@ -2,35 +2,37 @@ import Link from "next/link";
 import styles from "./Login.module.scss";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
+import { signIn } from "next-auth/react";
 
 const LoginViews = () => {
-  const { push } = useRouter();
+  const { push, query } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const callbackUrl: string = (query.callbackUrl as string) || "/";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
     const form = e.target as HTMLFormElement;
-    const data = {
-      email: form.email.value,
-      password: form.password.value,
-    };
-    const result = await fetch("/api/user/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    if (result.status === 200) {
-      form.reset();
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: form.email.value,
+        password: form.password.value,
+        callbackUrl,
+      })
+      if (!res?.error) {
+        form.reset();
+        setIsLoading(false);
+        push(callbackUrl);
+      } else {
+        setIsLoading(false);
+        setError("Email or password is incorrect");
+      }
+    } catch {
       setIsLoading(false);
-      push("/auth/login");
-    } else {
-      setIsLoading(false);
-      setError("Email or password is incorrect");
+      setError("Login Failed");
     }
   };
 
