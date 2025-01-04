@@ -3,7 +3,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { loginWithGoogle, signIn } from "@/services/auth";
+import { loginWithGoogle, signIn } from "@/services/auth/service";
 import bcrypt from "bcrypt";
 
 const authOptions: NextAuthOptions = {

@@ -1,10 +1,10 @@
-import Link from "next/link";
 import styles from "./Login.module.scss";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
+import AuthLayout from "@/components/layouts/AuthLayout";
 
 const LoginViews = () => {
   const { push, query } = useRouter();
@@ -39,37 +39,30 @@ const LoginViews = () => {
   };
 
   return (
-    <div className={styles.login}>
-      <div className={styles.login__container}>
-        <h1 className={styles.login__title}>Login</h1>
-        {error && <p className={styles.login__error}>{error}</p>}
-        <form className={styles.login__form} onSubmit={handleSubmit}>
-          <Input label="Email" type="email" name="email" id="email" />
-          <Input label="Password" type="password" name="password" id="password" />
-          <Button 
-          type="submit" 
-          className={styles.login__form__button}>
-            {isLoading ? "Loading..." : "Login"}
-          </Button>
-        </form>
-        <p>
-          Don&apos;t have any account? <Link href={"/auth/register"} className={styles.signin}>Sign Up</Link>
-        </p>
-        <div className={styles.or}>
-          <div className={styles.or__line}></div>
-          <p className={styles.or__test}>OR</p>
-          <div className={styles.or__line}></div>
-        </div>
+    <AuthLayout title="Login" error={error} link="/auth/register" authText="Don&apos;t have any account?" linkText="Sign Up">
+      <form className={styles.login__form} onSubmit={handleSubmit}>
+        <Input label="Email" type="email" name="email" id="email" />
+        <Input label="Password" type="password" name="password" id="password" />
         <Button 
-        type="button" 
-        variant="secondary" 
-        className={styles.login__google__button} 
-        onClick={() => signIn("google", { callbackUrl, redirect: false })}>
-          <i className='bx bxl-google'></i>
-          {isLoading ? "Loading..." : "Login with Google"}
+        type="submit" 
+        className={styles.login__form__button}>
+          {isLoading ? "Loading..." : "Login"}
         </Button>
+      </form>
+      <div className={styles.or}>
+        <div className={styles.or__line}></div>
+        <p className={styles.or__test}>OR</p>
+        <div className={styles.or__line}></div>
       </div>
-    </div>
+      <Button 
+      type="button" 
+      variant="secondary" 
+      className={styles.login__google__button} 
+      onClick={() => signIn("google", { callbackUrl, redirect: false })}>
+        <i className='bx bxl-google'></i>
+        {isLoading ? "Loading..." : "Login with Google"}
+      </Button>
+    </AuthLayout>
   );
 };
 

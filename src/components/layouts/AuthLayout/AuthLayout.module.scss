@@ -1,0 +1,45 @@
+.authLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #0b0a29;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3rem;
+    width: 25rem;
+    min-width: 20rem;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: white;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+  }
+
+  &__error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.authLayout__linkText {
+  font-weight: 700;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.linkText:hover {
+  text-decoration: underline;
+}

@@ -1,38 +1,4 @@
 .login {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: #0b0a29;
-
-  &__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem;
-    width: 25rem;
-    min-width: 20rem;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    background-color: white;
-  }
-
-  &__title {
-    font-size: 2rem;
-    font-weight: 900;
-    margin-bottom: 2rem;
-  }
-
-  &__error {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-  }
-
   &__form {
     display: flex;
     flex-direction: column;
@@ -51,16 +17,22 @@
       background-color: #121041;
     }
   }
-}
 
-.signin {
-  font-weight: 700;
-  color: #007bff;
-  cursor: pointer;
-}
-
-.signin:hover {
-  text-decoration: underline;
+  &__google__button {
+    font-size: 1.1rem;
+    font-weight: 700;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    width: 100%;
+  
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  
+  &google__button:hover {
+    background-color: rgb(254, 63, 63, 0.8);
+  }
 }
 
 .or {
@@ -69,27 +41,11 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: center;
   text-align: center;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 
   &__line {
     height: 1px;
     background-color: black;
     grid-column: span 2 / span 2;
   }
-}
-
-.login__google__button {
-  font-size: 1.1rem;
-  font-weight: 700;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
-  width: 100%;
-
-  i {
-    font-size: 1.5rem;
-  }
-}
-
-.login__google__button:hover {
-  background-color: rgb(254, 63, 63, 0.8);
 }
