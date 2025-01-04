@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./Login.module.scss";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
 import { useRouter } from "next/router";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
@@ -42,29 +44,13 @@ const LoginViews = () => {
         <h1 className={styles.login__title}>Login</h1>
         {error && <p className={styles.login__error}>{error}</p>}
         <form className={styles.login__form} onSubmit={handleSubmit}>
-          <div className={styles.login__form__item}>
-            <label className={styles.login__form__item__label} htmlFor="email">Email</label>
-            <input
-              className={styles.login__form__item__input}
-              type="email"
-              name="email"
-              id="email"
-              required
-            />
-          </div>
-          <div className={styles.login__form__item}>
-            <label className={styles.login__form__item__label} htmlFor="password">Password</label>
-            <input
-              className={styles.login__form__item__input}
-              type="password"
-              name="password"
-              id="password"
-              required
-            />
-          </div>
-          <button className={styles.login__form__button} type="submit">
+          <Input label="Email" type="email" name="email" id="email" />
+          <Input label="Password" type="password" name="password" id="password" />
+          <Button 
+          type="submit" 
+          className={styles.login__form__button}>
             {isLoading ? "Loading..." : "Login"}
-          </button>
+          </Button>
         </form>
         <p>
           Don&apos;t have any account? <Link href={"/auth/register"} className={styles.signin}>Sign Up</Link>
@@ -74,10 +60,14 @@ const LoginViews = () => {
           <p className={styles.or__test}>OR</p>
           <div className={styles.or__line}></div>
         </div>
-        <button className={styles.login__google__button} type="button" onClick={() => signIn("google", { callbackUrl, redirect: false })}>
+        <Button 
+        type="button" 
+        variant="secondary" 
+        className={styles.login__google__button} 
+        onClick={() => signIn("google", { callbackUrl, redirect: false })}>
           <i className='bx bxl-google'></i>
           {isLoading ? "Loading..." : "Login with Google"}
-        </button>
+        </Button>
       </div>
     </div>
   );

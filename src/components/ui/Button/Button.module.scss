@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: #0b0a29;
+  color: #fff;
+}
+
+.secondary {
+  background-color: rgb(255, 47, 47);
+  color: #fff;
+}
