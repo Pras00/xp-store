@@ -1,0 +1,75 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #0b0a29;
+  color: white;
+  padding: 1.25rem 1rem;
+  width: 18rem;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+  
+      &__item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.15rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &__active {
+          background-color: white;
+          border-radius: 0.5rem;
+          color: #0b0a29;
+        }
+      }
+
+      &__item:hover {
+        background-color: white;
+        border-radius: 0.5rem;
+        color: #0b0a29;
+        padding: 0.5rem;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+      width: 100%;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    &__button:hover {
+      background-color: #0b0a29;
+      outline: 2px solid white;
+      color: white;
+      transition: all 0.3s ease;
+    }
+  }
+}
