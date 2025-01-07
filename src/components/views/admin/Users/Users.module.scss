@@ -1,0 +1,61 @@
+.users {
+  &__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 3rem;
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+
+    
+    &__head {
+      background-color: #0b0a29;
+      color: white;
+
+      &__row {
+        th {
+          padding: 1rem;
+          text-align: center;
+          border: 1px solid #ddd;
+        }
+      }
+    }
+    
+    &__body {
+      background-color: white;
+
+      &__row {
+        td {
+          padding: 1rem;
+          text-align: center;
+          border: 1px solid #ddd;
+          
+        }
+
+        &__action {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem; 
+
+          &__button {
+            width: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            font-weight: 700;
+          }
+        }
+      }
+      
+      &__row:nth-child(even) {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}

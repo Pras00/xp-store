@@ -1,0 +1,21 @@
+.modal {
+  &__title {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &__button {
+      font-size: 1.1rem;
+
+      &:hover {
+        background-color: #100e3c;
+      }
+    }
+  }
+}

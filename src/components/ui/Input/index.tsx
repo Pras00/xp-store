@@ -6,10 +6,12 @@ type Proptypes = {
   name: string;
   id: string;
   placeholder?: string;
+  defaultValue?: string;
+  disabled?: boolean;
 }
 
 const Input = (props: Proptypes) => {
-  const { label, type, name, id, placeholder } = props;
+  const { label, type, name, id, placeholder, defaultValue, disabled } = props;
   return (
     <>
       <div className={styles.form__item}>
@@ -20,6 +22,8 @@ const Input = (props: Proptypes) => {
           name={name}
           id={id}
           placeholder={placeholder}
+          defaultValue={defaultValue}
+          disabled={disabled}
           required
         />
       </div>

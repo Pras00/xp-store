@@ -1,4 +1,9 @@
 .adminLayout {
   display: flex;
   margin-left: 18rem;
+
+  &__main {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+  }
 }

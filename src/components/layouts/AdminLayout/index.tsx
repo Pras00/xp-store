@@ -33,7 +33,9 @@ const AdminLayout = (props: Proptypes) => {
   return (
     <div className={styles.adminLayout}>
       <Sidebar lists={listSidebarItem} />
-      {children}
+      <div className={styles.adminLayout__main}>
+        {children}
+      </div>
     </div>
   )
 }
