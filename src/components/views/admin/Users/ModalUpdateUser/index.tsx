@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Input from "@/components/ui/Input";
 import Modal from "@/components/ui/Modal";
 import Select from "@/components/ui/Select";
@@ -6,6 +7,7 @@ import styles from "./ModalUpdateUser.module.scss";
 import Button from "@/components/ui/Button";
 import { FormEvent, useState } from "react";
 import userServices from "@/services/user";
+import { useSession } from "next-auth/react";
 
 type Proptypes = {  
   updatedUser: User;
@@ -16,6 +18,7 @@ type Proptypes = {
 const ModalUpdateUser = (props: Proptypes) => {
   const { updatedUser, setUpdatedUser, setUserData } = props;
   const [isLoading, setIsLoading] = useState(false);
+  const session: any = useSession();
   const handleUpdateUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -29,7 +32,7 @@ const ModalUpdateUser = (props: Proptypes) => {
       role: formData.get('role') as string
     };
     try {
-      const result = await userServices.updateUser(updatedUser.id, data);
+      const result = await userServices.updateUser(updatedUser.id, data, session.data?.accessToken || "");
       if (result.status === 200) {
         form.reset();
         setIsLoading(false);
